@@ -22,7 +22,7 @@ class PersonaController extends Controller
         $persona->apellido_mat = $request->apellido_mat;
 
         if($persona->save())
-        return response()->json(["persona"=>$persona],201);
+        return response()->json(['messeage' => 'Registro guardado correctamente'],200);
         return response()->json(null,400);
     }
     public function destroy($id)

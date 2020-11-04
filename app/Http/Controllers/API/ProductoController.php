@@ -18,9 +18,8 @@ class ProductoController extends Controller
     {
         $producto = new Producto();
         $producto->NombreProducto = $request->NombreProducto;
-        $producto->comentario = $request->comentario;
-        if($comentario->save())
-        return response()->json(["producto"=>$producto],201);
+        if($producto->save())
+        return response()->json(['res' => true, 'messeage' => 'Registro agregado correctamente'],200);
         return response()->json(null,400);
     }
     public function destroy($id)
@@ -28,15 +27,13 @@ class ProductoController extends Controller
        Producto::destroy($id);
        return response()->json(['res' => true, 'messeage' => 'Registro eliminado correctamente'],200);
     }
-    /*
+    
     public function update(Request $request, $id)
     {
         $update = new Producto();
         $update = Producto::find($id);
-        $update -> nombre = $request->get('nombre');
-        $update -> apellido_pat = $request->get('apellido_pat');
-        $update -> apellido_mat = $request->get('apellido_mat');
+        $update ->NombreProducto = $request->get('NombreProducto');
         $update->save();
         return response()->json(['res' => true, 'messeage' => 'Registro modificado correctamente'],200);
-    }*/
+    }
 }

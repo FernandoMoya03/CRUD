@@ -8,4 +8,8 @@ class Producto extends Model
 {
     //
     protected $table = 'productos';
+    public function comentarios()
+    {
+        return $this->hasMany('App\Modelos\Comentario');
+    }
 }

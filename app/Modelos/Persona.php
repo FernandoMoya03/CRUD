@@ -8,4 +8,9 @@ class Persona extends Model
 {
     //
     protected $table = 'personas';
+    public function comentarios()
+    {
+        return $this->hasMany('App\Modelos\Comentario');
+    }
+    
 }

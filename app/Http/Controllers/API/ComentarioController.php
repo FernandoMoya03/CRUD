@@ -18,8 +18,10 @@ class ComentarioController extends Controller
     {
         $comentario = new Comentario();
         $comentario->comentario = $request->comentario;
+        $comentario->producto_id = $request->producto_id;
+        $comentario->persona_id = $request->persona_id;
         if($comentario->save())
-        return response()->json(["comentario"=>$comentario],201);
+        return response()->json(['messeage' => 'Registro guardado correctamente'],200);
         return response()->json(null,400);
     }
     public function destroy($id)
@@ -32,6 +34,8 @@ class ComentarioController extends Controller
         $update = new Comentario();
         $update = Comentario::find($id);
         $update -> comentario = $request->get('comentario');
+        $update -> producto_id = $request->get('producto_id');
+        $update -> persona_id = $request->get('producto_id');
         $update->save();
         return response()->json(['res' => true, 'messeage' => 'Registro modificado correctamente'],200);
     }
